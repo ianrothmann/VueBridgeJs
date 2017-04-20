@@ -1,5 +1,5 @@
 # VueBridgeJs
-A Bridge to expose Routes and Variables from multipage applications. Currently developed for Laravel to be user in conjuction with the php package LaravelVueBridge
+A Bridge to expose Routes and Variables from multipage applications. Currently developed for Laravel to be user in conjuction with the php package LaravelVueBridge (https://github.com/ianrothmann/LaravelVueBridge)
 
 # Installation
 To import the shared laravel routes, use the following plugin:
