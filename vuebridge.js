@@ -7,9 +7,21 @@ const _routeActions=(typeof routeActions === 'undefined') ? {} : routeActions;
 
 export const VueBridgeRoutes = {};
 
+import {Validator} from 'vee-validate';
 VueBridgeRoutes.install = function (Vue, options) {
     Vue.prototype.$routeActions = _routeActions;
     Vue.prototype.$routes=Vue.resource('',{},_routeActions);
+
+    Validator.extend('server', {
+        getMessage: (field,args,data) => {
+            return data.data || 'Something went wrong during validation.';
+        },
+        validate: (value,args) => {
+            const data={};
+            data[args[1]]=value;
+            return Vue.prototype.$routes[args[0]](data);
+        }
+    });
 };
 
 export let Store = null;
