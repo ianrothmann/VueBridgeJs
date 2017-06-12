@@ -48,7 +48,23 @@ this.$routes.route_name(data).then(...);
 ```
 For more information see VueResource resources.
 
-The route actions could also be accessed through this.$routeActions
+The route actions may also be accessed through this.$routeActions
+
+# VeeValidate Integration
+VueBridge now requries VeeValidate. It automatically installs the `server` validator. You can use it by specifying the route name and the column name to send the value as. 
+* Example: `server:{route_resource_name},{column_name}`
+
+```html
+<rw-input v-validate="'required|email|server:unique_email,email'" label="Email"></rw-input>
+```
+On the server side (PHP):
+```php
+ public function unique_email($code){
+      return ['valid'=>false,'data'=>'The field is invalid. I am the server. You sent: '.$code];
+ }
+```
+You have to return an array with `valid`=>true/false and the message in `data`.
+
 
 # Exposed Variables
 
