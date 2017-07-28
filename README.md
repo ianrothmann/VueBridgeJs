@@ -32,13 +32,26 @@ const App = VueBridge.VueRoot({
 
 Create a mixin on any page page:
 ```
-const pageMixin = {
+const viewMixin = {
 ...
 };
 ```
 
 This mixin will automatically be added to the Root Vue instance on page load.
 
+# Laravel Mix
+If it is being used with Laravel, you can use the mix plugin to automatically push your view mixins through the laravel mix pipeline for transpilation etc.
+
+In `webpack.mix.js`,
+
+```javascript
+const vueBridge = require('VueBridgeJs/vuebridge-webpack');
+vueBridge.mixViews(src,dest);
+```
+
+By default src is located in `resources/assets/js/views/` and dest `public/js/views/`.
+
+More information on view mixins can be found in the LaravelVueBridge component's readme.
 
 # Routes
 
