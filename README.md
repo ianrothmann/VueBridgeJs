@@ -57,8 +57,12 @@ VueBridge now requries VeeValidate. It automatically installs the `server` valid
 ```html
 <rw-input v-validate="'required|email|server:unique_email,email'" label="Email"></rw-input>
 ```
-On the server side (PHP):
+On the server side (Laravel):
 ```php
+ web.php
+ Route::get('/examples/rocketforms/unique_email/{code}', 'Examples\ExampleController@unique_email')->name('unique_email');
+ 
+ Controller:
  public function unique_email($code){
       return ['valid'=>false,'data'=>'The field is invalid. I am the server. You sent: '.$code];
  }
