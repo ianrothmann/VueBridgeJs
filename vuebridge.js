@@ -1,8 +1,9 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-const _pageMixin= (typeof pageMixin === 'undefined') ? {} : pageMixin;
-const _pageData= (typeof pageData === 'undefined') ? {} : pageData;
+
+const _viewMixin= (typeof viewMixin === 'undefined') ? {} : viewMixin;
+const _serverData= (typeof serverData === 'undefined') ? {} : serverData;
 const _routeActions=(typeof routeActions === 'undefined') ? {} : routeActions;
 
 export const VueBridgeRoutes = {};
@@ -33,22 +34,22 @@ export const VueBridge = {
         if(!vueoptions.hasOwnProperty('mixins')){
             vueoptions['mixins']=[];
         }
-        vueoptions['mixins'].push(_pageMixin);
+        vueoptions['mixins'].push(_viewMixin);
 
         if(typeof vuexoptions==='undefined'){
             if(!vueoptions.hasOwnProperty('data')){
                 vueoptions['data']={
-                    server : _pageData
+                    server : _serverData
                 };
             }else{
-                vueoptions['data']['server']=_pageData;
+                vueoptions['data']['server']=_serverData;
             }
         }else{
             if(vuexoptions.hasOwnProperty('state')){
-                vuexoptions['state']['server']=_pageData;
+                vuexoptions['state']['server']=_serverData;
             }else{
                 vuexoptions['state']={
-                  server : _pageData
+                  server : _serverData
                 };
             }
             Store=new Vuex.Store(vuexoptions);
