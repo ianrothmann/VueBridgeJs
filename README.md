@@ -6,12 +6,12 @@ A Bridge to expose Routes and Variables from multipage applications. Currently d
 npm install vuebridge
 ```
 To import the shared laravel routes, use the following plugin:
-```
+```javascript
 import {VueBridgeRoutes,VueBridge} from 'vuebridge/vuebridge';
 Vue.use(VueBridgeRoutes);
 ```
 To start a root vue component, use VueBridge.VueRoot:
-```
+```javascript
 const App = VueBridge.VueRoot({
     store,
     el: '#app',
@@ -31,7 +31,7 @@ const App = VueBridge.VueRoot({
 # Root App Page mixins
 
 Create a mixin on any page page:
-```
+```javascript
 const viewMixin = {
 ...
 };
@@ -56,7 +56,7 @@ More information on view mixins can be found in the LaravelVueBridge component's
 # Routes
 
 Routes will be available as VueResource resources. Components can access:
-```
+```javascript
 this.$routes.route_name(data).then(...);
 ```
 For more information see VueResource resources.
