@@ -1,8 +1,8 @@
 {
   "name": "vuebridge",
-  "version": "0.0.2",
+  "version": "0.1.1",
   "description": "A Bridge to expose Routes and Variables from multipage applications. Currently developed for Laravel to be user in conjuction with the php package LaravelVueBridge",
-  "main": "vuebridge.js",
+  "main": "dist/vuebridge.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

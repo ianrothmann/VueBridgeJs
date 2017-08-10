@@ -32,7 +32,7 @@ const App = VueBridge.VueRoot({
 
 Create a mixin on any page page:
 ```
-const pageMixin = {
+const viewMixin = {
 ...
 };
 ```
