@@ -6,12 +6,12 @@ A Bridge to expose Routes and Variables from multipage applications. Currently d
 npm install vuebridge
 ```
 To import the shared laravel routes, use the following plugin:
-```
+```javascript
 import {VueBridgeRoutes,VueBridge} from 'vuebridge/vuebridge';
 Vue.use(VueBridgeRoutes);
 ```
 To start a root vue component, use VueBridge.VueRoot:
-```
+```javascript
 const App = VueBridge.VueRoot({
     store,
     el: '#app',
@@ -39,11 +39,24 @@ const viewMixin = {
 
 This mixin will automatically be added to the Root Vue instance on page load.
 
+# Laravel Mix
+If it is being used with Laravel, you can use the mix plugin to automatically push your view mixins through the laravel mix pipeline for transpilation etc.
+
+In `webpack.mix.js`,
+
+```javascript
+const vueBridge = require('VueBridgeJs/vuebridge-webpack');
+vueBridge.mixViews(src,dest);
+```
+
+By default src is located in `resources/assets/js/views/` and dest `public/js/views/`.
+
+More information on view mixins can be found in the LaravelVueBridge component's readme.
 
 # Routes
 
 Routes will be available as VueResource resources. Components can access:
-```
+```javascript
 this.$routes.route_name(data).then(...);
 ```
 For more information see VueResource resources.
