@@ -26,6 +26,9 @@ var VueBridgeRoutes = exports.VueBridgeRoutes = {};
 VueBridgeRoutes.install = function (Vue, options) {
     Vue.prototype.$routeActions = _routeActions;
     Vue.prototype.$routes = Vue.resource('', {}, _routeActions);
+    Vue.prototype.$t = function (code) {
+        return _serverData.__lang[code];
+    };
 
     _veeValidate.Validator.extend('server', {
         getMessage: function getMessage(field, args, data) {
