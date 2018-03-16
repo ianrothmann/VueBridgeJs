@@ -12,15 +12,22 @@ import {Validator} from 'vee-validate';
 VueBridgeRoutes.install = function (Vue, options) {
     Vue.prototype.$routeActions = _routeActions;
     Vue.prototype.$routes=Vue.resource('',{},_routeActions);
+    Vue.prototype.$t = function(code){
+        return _serverData.__lang[code];
+    };
 
     Validator.extend('server', {
         getMessage: (field,args,data) => {
-            return data.data || 'Something went wrong during validation.';
+            return data.data || data || 'Something went wrong during validation.';
         },
         validate: (value,args) => {
             const data={};
             data[args[1]]=value;
-            return Vue.prototype.$routes[args[0]](data);
+            return Vue.prototype.$routes[args[0]](data).then((response)=>{
+                response=response.body;
+                response.valid=!!response.valid;
+                return response;
+            });
         }
     });
 };

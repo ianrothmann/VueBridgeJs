@@ -29,12 +29,16 @@ VueBridgeRoutes.install = function (Vue, options) {
 
     _veeValidate.Validator.extend('server', {
         getMessage: function getMessage(field, args, data) {
-            return data.data || 'Something went wrong during validation.';
+            return data.data || data || 'Something went wrong during validation.';
         },
         validate: function validate(value, args) {
             var data = {};
             data[args[1]] = value;
-            return Vue.prototype.$routes[args[0]](data);
+            return Vue.prototype.$routes[args[0]](data).then(function (response) {
+                response = response.body;
+                response.valid = !!response.valid;
+                return response;
+            });
         }
     });
 };
