@@ -3,7 +3,7 @@ A Bridge to expose Routes and Variables from multipage applications. Currently d
 
 # Installation
 ```
-npm install vuebridge
+npm install vuebridge --save-dev
 ```
 To import the shared laravel routes, use the following plugin:
 ```javascript
@@ -59,7 +59,7 @@ Routes will be available as VueResource resources. Components can access:
 ```javascript
 this.$routes.route_name(data).then(...);
 ```
-For more information see VueResource resources.
+For more information see VueResource resource documentation here: https://github.com/pagekit/vue-resource/blob/develop/docs/resource.md
 
 The route actions may also be accessed through this.$routeActions
 
