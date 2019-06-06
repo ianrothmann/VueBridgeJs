@@ -1,8 +1,6 @@
 'use strict';
 
-var _require = require('laravel-mix'),
-    mix = _require.mix;
-
+var mix = require('laravel-mix');
 var read_dir_rec = require('fs-readdir-recursive');
 
 function mixViews() {

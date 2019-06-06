@@ -1,6 +1,6 @@
 {
   "name": "vuebridge",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "A Bridge to expose Routes and Variables from multipage applications. Currently developed for Laravel to be user in conjuction with the php package LaravelVueBridge",
   "main": "dist/vuebridge.js",
   "scripts": {
