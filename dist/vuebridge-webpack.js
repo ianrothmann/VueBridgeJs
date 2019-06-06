@@ -6,7 +6,7 @@ var _require = require('laravel-mix'),
 var read_dir_rec = require('fs-readdir-recursive');
 
 function mixViews() {
-    var pageSrc = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'resources/assets/js/views/';
+    var pageSrc = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'resources/js/views/';
     var pageDest = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'public/js/views/';
     var _iteratorNormalCompletion = true;
     var _didIteratorError = false;
@@ -17,7 +17,7 @@ function mixViews() {
             var file = _step.value;
 
             if (file.endsWith('.js')) {
-                if (mix.config.inProduction) {
+                if (mix.inProduction) {
                     mix.babel(pageSrc + file, pageDest + file).version();
                 } else {
                     mix.babel(pageSrc + file, pageDest + file);
